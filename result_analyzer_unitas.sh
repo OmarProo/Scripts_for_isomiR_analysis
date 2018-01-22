@@ -23,8 +23,8 @@ do
 	TOTAL_COUNTS=$(grep -w "^$PALABRA" intermediate_table.tsv | cut -f3 | tr "\n" "+" | sed 's#+$##')
 	TOTAL_COUNTS=$(echo $TOTAL_COUNTS | bc)
 	echo "[DEBUGGING] doing percentages calculations for CANONICAL_PERCENTAGE"
-	CANONICAL_PERCENTAGES=$(echo "$CANONICAL_COUNTS $TOTAL_COUNTS" | awk '{ print ($1/$2) * 100}' )
-	ISOMIRS_PERCENTAGE=$(echo "$ISOMIR_COUNTS $TOTAL_COUNTS" | awk '{ print ($1/$2) * 100' )
+	CANONICAL_PERCENTAGE=$(echo "$CANONICAL_COUNTS $TOTAL_COUNTS" | awk '{ print ($1/$2) * 100}' )
+	ISOMIRS_PERCENTAGE=$(echo "$ISOMIR_COUNTS $TOTAL_COUNTS" | awk '{ print ($1/$2) * 100}' )
 	echo "$MIRNA_ID	$CANONICAL_COUNTS	$ISOMIR_COUNTS	$TOTAL_COUNTS	$CANONICAL_PERCENTAGE	$ISOMIRS_PERCENTAGE" >> XP05_KO.tsv
 done < unique_IDs.txt
 
